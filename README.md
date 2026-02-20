@@ -43,7 +43,9 @@ esto generara una imagen lista para Kubernetes
 
 Se utiliza Minikube como entorno local de pruebas:
 
---se ejecuta en el terminal:minikube start
+```
+minikube start
+```
 
 - Creación del Deployment
 
@@ -86,12 +88,14 @@ El selector permite que el Service identifique los Pods correctos.
 
 Aplicación del deployment:
 
---se ejecuta en el terminal: kubectl apply -f deployment.yaml
+```
+kubectl apply -f deployment.yaml
+```
 
 
 - Creación del Service (Balanceador de Carga)
 
-Archivo service.yaml:
+```Archivo service.yaml:
 
 apiVersion: v1
 kind: Service
@@ -105,21 +109,24 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-
+```
 Aplicación:
 
- --se ejecuta en el terminal: kubectl apply -f service.yaml
+ ```
+kubectl apply -f service.yaml
+```
 
 3️) Implementación del Sistema de Escalado Horizontal
 
 - Habilitación del Metrics Server
 
 Verificación:
-se ejecuta: kubectl get pods -n kube-system
-
+```
+kubectl get pods -n kube-system
+```
 - Creación del Horizontal Pod Autoscaler
 
-Archivo hpa.yaml:
+```Archivo hpa.yaml:
 
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -139,29 +146,34 @@ spec:
       target:
         type: Utilization
         averageUtilization: 50
-
+```
 Aplicación:
-
+```
 kubectl apply -f hpa.yaml
-
+```
 - Verificación del HPA
 
-se ejecuta: kubectl get hpa
+```
+kubectl get hpa
+```
 
 Monitoreo en tiempo real:
 
-se ejecuta: kubectl get hpa -w
-
+```
+kubectl get hpa -w
+```
 - Prueba de Escalado
 
 Generar carga:
 
-se ejecuta: kubectl run -i --tty load-generator --rm --image=busybox -- /bin/sh
-
+```
+kubectl run -i --tty load-generator --rm --image=busybox -- /bin/sh
+```
 Dentro del contenedor:
 
-se ejecuta: while true; do wget -q -O- http://php-app-service; done
-
+```
+while true; do wget -q -O- http://php-app-service; done
+```
 Cuando la CPU supera el 50%:
 
 Se crean nuevas réplicas automáticamente.
@@ -209,4 +221,5 @@ Kubernetes crea uno nuevo automáticamente.
 El Service deja de enviar tráfico al Pod fallido.
 
  
+
 
