@@ -25,7 +25,8 @@ Dockerfile
 
 Ejemplo de configuración:
 
-```dockerfile
+Dockerfile:
+```
 FROM php:8.2-apache
 
 COPY . /var/www/html/
@@ -95,8 +96,8 @@ kubectl apply -f deployment.yaml
 
 - Creación del Service (Balanceador de Carga)
 
-```Archivo service.yaml:
-
+Archivo service.yaml:
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -126,8 +127,8 @@ kubectl get pods -n kube-system
 ```
 - Creación del Horizontal Pod Autoscaler
 
-```Archivo hpa.yaml:
-
+Archivo hpa.yaml:
+```
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -221,5 +222,6 @@ Kubernetes crea uno nuevo automáticamente.
 El Service deja de enviar tráfico al Pod fallido.
 
  
+
 
 
