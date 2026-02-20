@@ -50,8 +50,10 @@ minikube start
 
 - Creación del Deployment
 
-Se define un archivo deployment.yaml:
+Se define un archivo 
 
+deployment.yaml:
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -77,6 +79,7 @@ spec:
             cpu: "100m"
           limits:
             cpu: "200m"
+```
 Explicación:
 
 Se crean 2 réplicas iniciales.
@@ -222,6 +225,7 @@ Kubernetes crea uno nuevo automáticamente.
 El Service deja de enviar tráfico al Pod fallido.
 
  
+
 
 
 
