@@ -33,10 +33,15 @@ COPY . /var/www/html/
 
 EXPOSE 80
 ```
-Para crea la imagen se ejecuta: docker build -t php-app .
-pero si utiliza minikube seria: eval $(minikube docker-env)
+Para crea la imagen se ejecuta
+```
 docker build -t php-app .
-
+```
+pero si utiliza minikube seria 
+```
+eval $(minikube docker-env)
+docker build -t php-app .
+```
 esto generara una imagen lista para Kubernetes
 
 2️) Configuración del Clúster de Kubernetes para Desplegar Réplicas con Balanceo de Carga
@@ -225,6 +230,7 @@ Kubernetes crea uno nuevo automáticamente.
 El Service deja de enviar tráfico al Pod fallido.
 
  
+
 
 
 
